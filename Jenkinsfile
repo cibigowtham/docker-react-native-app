@@ -3,17 +3,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'npm run build' 
+                sh 'npm run build'
             }
         }
         stage('Checkstyle') {
             steps {
-                echo 'npm lint' 
+                sh 'npm lint' 
             }
         }
         stage('Test') {
             steps {
-                echo 'npm run test' 
+                sh 'npm run test' 
             }
         }
     }
