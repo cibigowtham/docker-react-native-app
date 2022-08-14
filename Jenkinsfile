@@ -1,19 +1,25 @@
 pipeline {
     agent any 
     stages {
-        stage('Build') {
+        stage('Install') {
             steps {
-                sh 'npm run build'
+                bat 'echo %CD%'
+                bat 'npm install'
             }
         }
         stage('Checkstyle') {
             steps {
-                sh 'npm lint' 
+                bat 'npm run lint' 
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'npm run build'
             }
         }
         stage('Test') {
             steps {
-                sh 'npm run test' 
+                bat 'set CI=true && npm test --watchAll -- --coverage' 
             }
         }
     }
