@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Checkstyle') {
             steps {
-                bat 'npm lint' 
+                bat 'npm run lint' 
             }
         }
         stage('Build') {
