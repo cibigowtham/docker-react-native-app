@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat 'set CI=true && npm test a -- --coverage' 
+                bat 'set CI=true && npm test ./*.js -- --coverage' 
             }
         }
     }
