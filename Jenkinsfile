@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                bash 'pwd'
-                bash 'npm install'
+                bat 'pwd'
+                bat 'npm install'
             }
         }
         stage('Build') {
             steps {
-                bash 'pwd'
-                bash 'npm run build'
+                bat 'pwd'
+                bat 'npm run build'
             }
         }
         stage('Checkstyle') {
