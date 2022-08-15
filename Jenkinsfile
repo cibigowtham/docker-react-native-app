@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat 'runTest.bat' 
+                bat 'npm run test -- --coverage' 
             }
         }
     }
