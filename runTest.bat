@@ -1,0 +1,1 @@
+set CI=true && npm run test a -- --coverage
