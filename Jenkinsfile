@@ -7,7 +7,7 @@ pipeline {
                 bat 'echo building docker image'
                 bat 'docker build -t learndocker/reactweb .'
                 bat 'echo "docker image successfully created"'
-                bat 'docker build -t learndocker/reactweb-dev -f Dockerfile.dev'
+                bat 'docker build -t learndocker/reactweb-dev -f Dockerfile.dev .'
                 bat 'echo docker dev image created'
             }
         }
