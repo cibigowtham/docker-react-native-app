@@ -5,9 +5,9 @@ pipeline {
             steps {
                 bat 'echo %CD%'
                 bat 'echo building docker image'
-                bat 'docker build -t learndocker/reactweb .'
+                bat 'docker build -t scibigowtham/reactweb .'
                 bat 'echo "docker image successfully created"'
-                bat 'docker build -t learndocker/reactweb-dev -f Dockerfile.dev .'
+                bat 'docker build -t scibigowtham/reactweb-dev -f Dockerfile.dev .'
                 bat 'echo docker dev image created'
             }
         }
@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Docker Push & Clean Up') {
             steps {
-                bat 'docker push'
+                bat 'docker push scibigowtham/reactweb'
                 bat 'echo image pushed to docker hub'
                 bar 'docker rmi learndocker/reactweb-dev'
                 bat 'echo cleaned up docker containers and images'
