@@ -1,0 +1,11 @@
+version: 1
+services:
+  reactweb:
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
+    volumes:
+      - /app/node_modules
+      - ./src:/app
+    ports:
+      - "80:80"
