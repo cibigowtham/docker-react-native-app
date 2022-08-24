@@ -26,7 +26,7 @@ pipeline {
             steps {
                 bat 'docker push scibigowtham/reactweb'
                 bat 'echo image pushed to docker hub'
-                bar 'docker rmi learndocker/reactweb-dev'
+                bat 'docker rmi scibigowtham/reactweb-dev'
                 bat 'echo cleaned up docker containers and images'
             }
         }
