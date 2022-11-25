@@ -2,7 +2,10 @@ pipeline {
   agent any
   stages {
     stage('Prepare') {
-      sh 'ls -l'
+      steps {
+        echo 'listing all the files'
+        sh 'ls -l'
+      }
     }
   }
 }
