@@ -2,6 +2,9 @@ pipeline {
   agent any
   stages {
     stage('Prepare') {
+      environment {
+        CURR_PS = ''
+      }
       steps {
         echo 'listing all the files'
         sh 'ls -l'
