@@ -17,9 +17,7 @@ pipeline {
 
         stage('Clean up'){
             when {
-                not {
-                    environment name: 'OLD_PROCESSES', value: ''
-                }
+                environment name: 'OLD_PROCESSES', value: ''
             }
             steps {
                 echo "Stopping old processes"
