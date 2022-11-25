@@ -13,6 +13,11 @@ pipeline {
           ).trim().replaceAll('\\n', ' ')
           echo "Current running processes ${CURR_PS}"
         }
+        when {
+          expression {
+            CURR_PS != ''
+          }
+        }
         echo 'listing all the files'
         sh 'ls -l'
       }
