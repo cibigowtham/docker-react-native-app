@@ -18,7 +18,7 @@ pipeline {
         stage('Clean up'){
             when {
                 not {
-                    environment name: 'CURR_PS', value: ''
+                    environment name: 'OLD_PROCESSES', value: ''
                 }
             }
             steps {
