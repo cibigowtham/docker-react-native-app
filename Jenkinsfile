@@ -10,7 +10,7 @@ pipeline {
                     OLD_PROCESSES = sh(
                             script: "cat docker-ps.txt | grep 'navis/smartaccess-api-gateway-builder' | grep -o '^[a-z0-9A-Z]\\+'",
                             returnStdout: true
-                    ).trim().replaceAll('\\n', ' ')
+                    ).trim()
                     echo "Old running processes ${OLD_PROCESSES}"
                 }
             }
@@ -22,7 +22,7 @@ pipeline {
             }
             steps {
                 echo "Stopping old processes"
-                echo "docker kill ${OLD_PROCESSES}"
+                echo "docker kill ${OLD_PROCESSES.replaceAll('\\n', ' ')}"
             }
         }
     }
