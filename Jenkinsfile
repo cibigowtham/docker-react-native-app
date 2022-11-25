@@ -1,7 +1,8 @@
-def OLD_PROCESSES = ''
-
 pipeline {
     agent any
+    environment {
+        OLD_PROCESSES = ""
+    }
     stages {
         stage('Prepare') {
             steps {
