@@ -1,24 +1,30 @@
+def OLD_PROCESSES = ''
+
 pipeline {
-  agent any
-  stages {
-    stage('Prepare') {
-      environment {
-        CURR_PS = ''
-      }
-      steps {
-        script {
-          CURR_PS = sh(
-            script: "cat docker-ps.txt | grep 'navis/smartaccess-api-gateway-builder' | grep -o '^[a-z0-9A-Z]\\+'",
-            returnStdout: true
-          ).trim().replaceAll('\\n', ' ')
-          echo "Current running processes ${CURR_PS}"
+    agent any
+    stages {
+        stage('Prepare') {
+            steps {
+                script {
+                    OLD_PROCESSES = sh(
+                            script: "cat docker-ps.txt | grep 'navis/smartaccess-api-gateway-builder' | grep -o '^[a-z0-9A-Z]\\+'",
+                            returnStdout: true
+                    ).trim().replaceAll('\\n', ' ')
+                    echo "Old running processes ${OLD_PROCESSES}"
+                }
+            }
         }
-       when {
-          environment name: 'CURR_PS', value: ''
+
+        stage('Clean up'){
+            when {
+                not {
+                    environment name: 'CURR_PS', value: ''
+                }
+            }
+            steps {
+                echo "Stopping old processes"
+                echo "docker kill ${OLD_PROCESSES}"
+            }
         }
-        echo 'listing all the files'
-        sh 'ls -l'
-      }
     }
-  }
 }
