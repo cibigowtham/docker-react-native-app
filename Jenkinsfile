@@ -13,9 +13,9 @@ pipeline {
           ).trim().replaceAll('\\n', ' ')
           echo "Current running processes ${CURR_PS}"
         }
-        when {
-          expression {
-            CURR_PS != ''
+       when {
+          anyOf {
+            environment name: 'CURR_PS', value: ''
           }
         }
         echo 'listing all the files'
