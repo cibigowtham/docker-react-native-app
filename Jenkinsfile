@@ -14,9 +14,7 @@ pipeline {
           echo "Current running processes ${CURR_PS}"
         }
        when {
-          anyOf {
-            environment name: 'CURR_PS', value: ''
-          }
+          environment name: 'CURR_PS', value: ''
         }
         echo 'listing all the files'
         sh 'ls -l'
